@@ -19,9 +19,17 @@ let allHBs = [];
 let currentHB = 0;
 
 const downloadCurrentDLLink = () => {
-    $("span:contains('Download')").each((index, dlb) => {
-        dlb.click();
-    });
+    try {
+        $("span:contains('Download')").each((index, dlb) => {
+            try {
+                dlb.click();
+            } catch (e) {
+                
+            }
+        });
+    } catch (e) {
+        
+    }
 }
 
 const downloadFromHB = () => {
@@ -29,10 +37,14 @@ const downloadFromHB = () => {
         throw new Error("Either we downloaded all photos or none of the little hamburger buttons with the download links inside were found");
     }
 
-    const chb = allHBs[currentHB];
+    try {
+        const chb = allHBs[currentHB];
 
-    chb.click();
-    setTimeout(downloadCurrentDLLink, 200);
+        chb.click();
+        setTimeout(downloadCurrentDLLink, 300);
+    } catch (e) {
+        
+    }
 
     currentHB += 1;
     setTimeout(downloadFromHB, 1000);
@@ -45,7 +57,7 @@ const iterateOverAllHamburgers = () => {
     });
 
     //setInterval(downloadFromHB, 700);
-    setTimeout(downloadFromHB, 700);
+    setTimeout(downloadFromHB, 1000);
 };
 (function() {
     'use strict';
