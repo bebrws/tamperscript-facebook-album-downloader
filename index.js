@@ -24,11 +24,11 @@ const downloadCurrentDLLink = () => {
             try {
                 dlb.click();
             } catch (e) {
-                
+
             }
         });
     } catch (e) {
-        
+
     }
 }
 
@@ -43,7 +43,7 @@ const downloadFromHB = () => {
         chb.click();
         setTimeout(downloadCurrentDLLink, 300);
     } catch (e) {
-        
+
     }
 
     currentHB += 1;
@@ -66,6 +66,13 @@ const iterateOverAllHamburgers = () => {
     // $$("[aria-label='Edit']")
     // $("span:contains('Download')")
 
-    setTimeout(iterateOverAllHamburgers, 3000);
+    // setTimeout(iterateOverAllHamburgers, 60000);
+
+    var myFetchBtn = document.createElement("div");
+    myFetchBtn.id = "my-fetch-btn";
+    myFetchBtn.innerHTML = "Scroll to bottom then come back and click here to download photos";
+    myFetchBtn.style.cssText = 'position:absolute;top:115px;z-index:100;background:silver;padding:10px;cursor: pointer;';
+    myFetchBtn.addEventListener("click", iterateOverAllHamburgers);
+    document.body.appendChild(myFetchBtn);
 
 })();
